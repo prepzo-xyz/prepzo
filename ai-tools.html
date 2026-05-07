@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Prepzo - AI Tools</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0b0b0b;
+    color: white;
+  }
+
+  header {
+    padding: 20px 40px;
+    border-bottom: 1px solid #1f1f1f;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: auto;
+    padding: 60px 20px;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  .box {
+    background: #151515;
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid #222;
+    margin-top: 20px;
+  }
+
+  input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    margin-top: 10px;
+  }
+
+  button {
+    margin-top: 10px;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 10px;
+    background: white;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .response {
+    margin-top: 15px;
+    color: #ccc;
+  }
+</style>
+</head>
+
+<body>
+
+<header>
+  <div><a href="index.html">⬅ Back</a></div>
+  <div>Prepzo AI Tools</div>
+</header>
+
+<div class="container">
+
+  <h1>🤖 AI Tools</h1>
+  <p style="color:#aaa;">Ask doubts and get smart study help instantly.</p>
+
+  <div class="box">
+
+    <h3>🧠 Doubt Solver</h3>
+    <input id="question" placeholder="Ask your question..." />
+    <button onclick="solve()">Get Answer</button>
+
+    <div class="response" id="output"></div>
+
+  </div>
+
+</div>
+
+<script>
+function solve() {
+  let q = document.getElementById("question").value.toLowerCase();
+  let output = document.getElementById("output");
+
+  if(q.includes("newton")) {
+    output.innerHTML = "Newton's Laws explain motion and forces. First law: inertia, Second: F=ma, Third: action-reaction.";
+  }
+  else if(q.includes("photosynthesis")) {
+    output.innerHTML = "Photosynthesis is the process where plants make food using sunlight, CO2 and water.";
+  }
+  else if(q.includes("derivative") || q.includes("math")) {
+    output.innerHTML = "A derivative shows how a function changes. It represents rate of change in calculus.";
+  }
+  else {
+    output.innerHTML = "Try asking about Newton, photosynthesis, or maths concepts. More topics coming soon!";
+  }
+}
+</script>
+
+</body>
+</html>
