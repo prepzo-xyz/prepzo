@@ -27,7 +27,7 @@
   /* HERO */
   .hero {
     text-align: center;
-    padding: 120px 20px 80px;
+    padding: 110px 20px 60px;
   }
 
   .hero h1 {
@@ -42,7 +42,7 @@
   }
 
   .btn {
-    margin-top: 25px;
+    margin-top: 20px;
     padding: 14px 28px;
     border: none;
     border-radius: 12px;
@@ -50,22 +50,17 @@
     color: black;
     font-weight: 600;
     cursor: pointer;
-    transition: 0.2s;
-  }
-
-  .btn:hover {
-    transform: scale(1.05);
   }
 
   /* SECTION */
   .section {
-    padding: 80px 20px;
+    padding: 60px 20px;
   }
 
   .section h2 {
     text-align: center;
-    font-size: 30px;
-    margin-bottom: 40px;
+    font-size: 28px;
+    margin-bottom: 30px;
   }
 
   /* GRID */
@@ -73,31 +68,65 @@
     max-width: 1000px;
     margin: auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  /* bottom centered row */
+  .grid-bottom {
+    max-width: 700px;
+    margin: 20px auto 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }
 
   /* CARDS */
   .card {
     background: rgba(255,255,255,0.03);
-    padding: 24px;
+    padding: 22px;
     border-radius: 16px;
     border: 1px solid rgba(255,255,255,0.08);
     transition: 0.25s;
     cursor: pointer;
+    text-align: center;
   }
 
   .card:hover {
     transform: translateY(-6px);
     background: rgba(255,255,255,0.06);
-    border-color: rgba(255,255,255,0.2);
+  }
+
+  /* grade selector */
+  .grade-grid {
+    max-width: 800px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+  }
+
+  .grade {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.1);
+    text-align: center;
+    font-size: 14px;
+    color: #ccc;
+    cursor: pointer;
+  }
+
+  .grade:hover {
+    background: rgba(255,255,255,0.05);
+    color: white;
   }
 
   footer {
     text-align: center;
-    padding: 30px;
+    padding: 40px;
     color: #666;
     border-top: 1px solid rgba(255,255,255,0.06);
+    margin-top: 40px;
   }
 </style>
 </head>
@@ -111,15 +140,30 @@
 <!-- HERO -->
 <div class="hero">
   <h1>Prepzo</h1>
-  <p>Study Smarter with AI</p>
-  <p>Your all-in-one exam preparation platform</p>
+  <p>Your study companion for Grades 7–12</p>
+  <p> Focus. Learn. Improve.</p>
   <button class="btn">Start Learning</button>
+</div>
+
+<!-- GRADE SELECTOR -->
+<div class="section">
+  <h2>Select Your Grade</h2>
+
+  <div class="grade-grid">
+    <div class="grade">7</div>
+    <div class="grade">8</div>
+    <div class="grade">9</div>
+    <div class="grade">10</div>
+    <div class="grade">11</div>
+    <div class="grade">12</div>
+  </div>
 </div>
 
 <!-- DASHBOARD -->
 <div class="section">
   <h2>Dashboard</h2>
 
+  <!-- TOP 3 -->
   <div class="grid">
 
     <div class="card" onclick="location.href='notes.html'">
@@ -137,17 +181,29 @@
       <p>Practice previous year questions.</p>
     </div>
 
+  </div>
+
+  <!-- BOTTOM CENTERED 2 -->
+  <div class="grid-bottom">
+
     <div class="card" onclick="location.href='quiz.html'">
       <h3>🧠 Quizzes</h3>
       <p>Test your knowledge with MCQs.</p>
+    </div>
+
+    <div class="card">
+      <h3>📊 Labelled Diagrams</h3>
+      <p>Visual learning with important diagrams.</p>
     </div>
 
   </div>
 </div>
 
 <footer>
-  © 2026 Prepzo • Built for students
+  © 2026 Prepzo • 
 </footer>
 
 </body>
 </html>
+
+
