@@ -1,3 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Prepzo</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0b0b0b;
+    color: white;
+  }
+
+  header {
+    padding: 20px 40px;
+    border-bottom: 1px solid #1f1f1f;
+  }
+
+  .logo {
+    font-size: 26px;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  /* HERO */
+  .hero {
+    text-align: center;
+    padding: 120px 20px 80px;
+  }
+
+  .hero h1 {
+    font-size: 74px;
+    margin: 0;
+  }
+
+  .hero p {
+    color: #aaa;
+    font-size: 18px;
+    margin-top: 10px;
+  }
+
+  .btn {
+    margin-top: 25px;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 12px;
+    background: white;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  /* SECTIONS */
+  .section {
+    padding: 90px 20px;
+  }
+
+  .section:nth-child(even) {
+    background: #0f0f0f;
+  }
+
+  .section h2 {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 45px;
+  }
+
+  /* GRID */
+  .grid {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 22px;
+  }
+
+  /* CARDS */
+  .card {
+    background: linear-gradient(145deg, #151515, #101010);
+    padding: 24px;
+    border-radius: 18px;
+    border: 1px solid #222;
+    transition: 0.25s;
+  }
+
+  .card:hover {
+    transform: translateY(-6px);
+    border-color: #333;
+  }
+
+  .card h3 {
+    margin-top: 0;
+  }
+
+  footer {
+    text-align: center;
+    padding: 30px;
+    color: #666;
+    border-top: 1px solid #1f1f1f;
+  }
+</style>
+
+</head>
+
+<body>
+
+<header>
+  <div class="logo">Prepzo</div>
+</header>
+
+<div class="hero">
+  <h1>Prepzo</h1>
+  <p>Study Smarter with AI</p>
+  <p>Your Study Companion for notes, AI tools & exam prep</p>
+  <button class="btn">Explore Resources</button>
+</div>
+
+<!-- WHAT YOU GET -->
 <div class="section">
   <h2>What You Get</h2>
 
@@ -5,7 +125,7 @@
 
     <div class="card">
       <h3>📘 Revision Notes</h3>
-      <p>Quick and simple notes for fast revision before exams.</p>
+      <p>Quick and simple notes for fast exam revision.</p>
     </div>
 
     <div class="card">
@@ -25,13 +145,20 @@
 
     <div class="card">
       <h3>📄 Sample Papers + PYQs</h3>
-      <p>Practice previous year questions and sample papers to boost confidence and speed.</p>
+      <p>Practice past year questions and sample papers to boost confidence.</p>
     </div>
 
     <div class="card">
       <h3>🧠 Quizzes</h3>
-      <p>Quick topic-wise quizzes to test your understanding and improve retention.</p>
+      <p>Quick tests to check understanding and improve memory.</p>
     </div>
 
   </div>
 </div>
+
+<footer>
+  © 2026 Prepzo • Built for students
+</footer>
+
+</body>
+</html>
