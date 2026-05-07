@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Prepzo</title>
@@ -29,6 +29,7 @@
     text-align: center;
     padding: 110px 20px 60px;
   }
+  <p id="gradeText" style="color:#888; margin-top:10px;"></p>
 
   .hero h1 {
     font-size: 72px;
@@ -196,6 +197,17 @@ let grade = localStorage.getItem("grade");
 
 if(grade){
   console.log("User grade:", grade);
+}
+</script>
+  <script>
+let grade = localStorage.getItem("grade");
+
+if(grade){
+  document.getElementById("gradeText").innerText =
+    "Currently set for Grade " + grade;
+} else {
+  document.getElementById("gradeText").innerText =
+    "No grade selected yet";
 }
 </script>
 
