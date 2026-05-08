@@ -1,104 +1,73 @@
 <!DOCTYPE html>
-<html>
-<head><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Select Grade</title>
 
 <style>
 body {
-  margin:0;
+  margin: 0;
   font-family: system-ui;
   background: radial-gradient(circle, #141414, #0b0b0b);
-  color:white;
-  text-align:center;
+  color: white;
+  text-align: center;
 }
 
 .container {
-  padding:100px 20px;
+  padding: 100px 20px;
 }
 
 .grid {
-  display:grid;
+  display: grid;
   grid-template-columns: repeat(3, 1fr);
-  max-width:500px;
-  margin:auto;
-  gap:15px;
+  max-width: 500px;
+  margin: auto;
+  gap: 15px;
 }
 
 .card {
-  padding:20px;
-  border:1px solid rgba(255,255,255,0.1);
-  border-radius:12px;
-  cursor:pointer;
-  transition:0.2s;
+  padding: 20px;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
 .card:hover {
   background: rgba(255,255,255,0.05);
 }
-</style>
-  @media (max-width: 768px) {
 
-  .hero h1 {
-    font-size: 42px;
-  }
-
-  .hero p {
-    font-size: 14px;
-    padding: 0 10px;
-  }
-
+@media (max-width: 768px) {
   .grid {
-    grid-template-columns: 1fr;
-  }
-
-  .grid-bottom {
-    grid-template-columns: 1fr;
-    max-width: 100%;
-  }
-
-  .grade-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .card {
-    padding: 18px;
-  }
-
-  .section {
-    padding: 40px 15px;
-  }
-
-  header {
-    padding: 14px 20px;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
+</style>
 </head>
 
 <body>
 
 <div class="container">
   <h1>Select Your Grade</h1>
-  <p style="color:#aaa;">Personalize your learning experience</p>
+  <p style="color:#aaa;">Choose your grade to continue</p>
 
   <div class="grid">
-
     <div class="card" onclick="go(7)">Grade 7</div>
     <div class="card" onclick="go(8)">Grade 8</div>
     <div class="card" onclick="go(9)">Grade 9</div>
     <div class="card" onclick="go(10)">Grade 10</div>
     <div class="card" onclick="go(11)">Grade 11</div>
     <div class="card" onclick="go(12)">Grade 12</div>
-
   </div>
 </div>
 
 <script>
 function go(grade){
   localStorage.setItem("grade", grade);
-  window.location.href = "index.html";
+  window.location.href = "dashboard.html";
 }
 </script>
-
 
 </body>
 </html>
