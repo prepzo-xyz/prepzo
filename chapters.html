@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Prepzo Chapters</title>
+
+<style>
+body {
+  margin:0;
+  font-family:system-ui;
+  background:#0b0b0b;
+  color:white;
+}
+
+.header {
+  padding:20px;
+  border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+.section {
+  padding:20px;
+}
+
+.card {
+  background:rgba(255,255,255,0.03);
+  padding:18px;
+  border-radius:12px;
+  margin-bottom:12px;
+  cursor:pointer;
+}
+
+.card:hover {
+  background:rgba(255,255,255,0.06);
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <h2 id="title"></h2>
+  <p id="info" style="color:#888;"></p>
+</div>
+
+<div class="section" id="chapters"></div>
+
+<script>
+let grade = localStorage.getItem("grade");
+let subject = localStorage.getItem("subject");
+let board = localStorage.getItem("board") || "CBSE";
+
+document.getElementById("title").innerText = subject + " Chapters";
+document.getElementById("info").innerText =
+  "Grade " + grade + " • " + board;
+
+let chapterList = {
+  "Maths": [
+    "Integers",
+    "Fractions",
+    "Algebra Basics",
+    "Linear Equations"
+  ],
+  "Science": [
+    "Motion",
+    "Force",
+    "Light",
+    "Sound"
+  ],
+  "Biology": [
+    "Cells",
+    "Human Body",
+    "Plants"
+  ],
+  "Chemistry": [
+    "Matter",
+    "Atoms",
+    "Chemical Reactions"
+  ]
+};
+
+let container = document.getElementById("chapters");
+
+if(chapterList[subject]){
+  chapterList[subject].forEach(ch => {
+    let div = document.createElement("div");
+    div.className = "card";
+    div.innerText = ch;
+    div.onclick = () => {
+      localStorage.setItem("chapter", ch);
+      window.location.href = "chapter.html";
+    };
+    container.appendChild(div);
+  });
+}
+</script>
+
+</body>
+</html>
