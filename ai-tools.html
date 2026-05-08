@@ -1,180 +1,159 @@
 <!DOCTYPE html>
-<html lang="en">
-<head><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<meta charset="UTF-8" />
+<html>
+<head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Prepzo - AI Tools</title>
+<title>Prepzo AI</title>
 
 <style>
-  body {
-    margin: 0;
-    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
-    background: radial-gradient(circle at top, #141414, #0b0b0b);
-    color: white;
-  }
-
-  header {
-    padding: 16px 40px;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-    backdrop-filter: blur(10px);
-    position: sticky;
-    top: 0;
-    background: rgba(10,10,10,0.6);
-    z-index: 10;
-  }
-
-  a {
-    color: white;
-    text-decoration: none;
-    opacity: 0.8;
-    transition: 0.2s;
-  }
-
-  a:hover {
-    opacity: 1;
-  }
-
-  .container {
-    max-width: 1000px;
-    margin: auto;
-    padding: 60px 20px;
-  }
-
-  h1 {
-    font-size: 42px;
-    margin-bottom: 10px;
-    letter-spacing: -0.5px;
-  }
-
-  p {
-    color: #b5b5b5;
-    line-height: 1.6;
-  }
-
-  /* CARDS */
-  .card {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.08);
-    padding: 20px;
-    border-radius: 16px;
-    margin-top: 18px;
-    transition: 0.25s;
-    backdrop-filter: blur(10px);
-  }
-
-  .card:hover {
-    transform: translateY(-6px);
-    background: rgba(255,255,255,0.06);
-    border-color: rgba(255,255,255,0.2);
-  }
-
-  /* GRID */
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
-  }
-
-  /* BUTTONS */
-  button {
-    padding: 12px 18px;
-    border-radius: 10px;
-    border: none;
-    background: linear-gradient(135deg, #fff, #ddd);
-    color: black;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.2s;
-  }
-
-  button:hover {
-    transform: scale(1.05);
-  }
-
-  /* SMOOTH PAGE FEEL */
-  * {
-    scroll-behavior: smooth;
-  }
-</style>
-  @media (max-width: 768px) {
-
-  .hero h1 {
-    font-size: 42px;
-  }
-
-  .hero p {
-    font-size: 14px;
-    padding: 0 10px;
-  }
-
-  .grid {
-    grid-template-columns: 1fr;
-  }
-
-  .grid-bottom {
-    grid-template-columns: 1fr;
-    max-width: 100%;
-  }
-
-  .grade-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .card {
-    padding: 18px;
-  }
-
-  .section {
-    padding: 40px 15px;
-  }
-
-  header {
-    padding: 14px 20px;
-  }
+body {
+  margin:0;
+  font-family:system-ui;
+  background:#0b0b0b;
+  color:white;
+  display:flex;
+  flex-direction:column;
+  height:100vh;
 }
+
+/* HEADER */
+.header {
+  padding:15px 20px;
+  border-bottom:1px solid rgba(255,255,255,0.1);
+  font-weight:600;
+}
+
+/* CHAT AREA */
+.chat {
+  flex:1;
+  overflow-y:auto;
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+}
+
+/* MESSAGE */
+.msg {
+  max-width:75%;
+  padding:12px 16px;
+  border-radius:12px;
+  line-height:1.5;
+}
+
+.user {
+  align-self:flex-end;
+  background:white;
+  color:black;
+}
+
+.bot {
+  align-self:flex-start;
+  background:#1a1a1a;
+}
+
+/* INPUT AREA */
+.input-area {
+  border-top:1px solid rgba(255,255,255,0.1);
+  padding:10px;
+  display:flex;
+  gap:10px;
+}
+
+input {
+  flex:1;
+  padding:12px;
+  border-radius:10px;
+  border:none;
+  background:#111;
+  color:white;
+}
+
+button {
+  padding:10px 16px;
+  border:none;
+  border-radius:10px;
+  background:white;
+  color:black;
+  cursor:pointer;
+}
+
+/* QUICK ACTIONS */
+.quick {
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  padding:10px 20px;
+}
+
+.quick button {
+  background:#222;
+  color:white;
+  border:1px solid rgba(255,255,255,0.1);
+}
+
+</style>
 </head>
 
 <body>
 
-<header>
-  <div><a href="index.html">⬅ Back</a></div>
-  <div>Prepzo AI Tools</div>
-</header>
+<div class="header">🤖 Prepzo AI</div>
 
-<div class="container">
+<div class="chat" id="chat"></div>
 
-  <h1>🤖 AI Tools</h1>
-  <p style="color:#aaa;">Ask doubts and get smart study help instantly.</p>
+<div class="quick">
+  <button onclick="quick('Explain this simply')">Explain</button>
+  <button onclick="quick('Give summary')">Summary</button>
+  <button onclick="quick('Important points')">Points</button>
+</div>
 
-  <div class="box">
-
-    <h3>🧠 Doubt Solver</h3>
-    <input id="question" placeholder="Ask your question..." />
-    <button onclick="solve()">Get Answer</button>
-
-    <div class="response" id="output"></div>
-
-  </div>
-
+<div class="input-area">
+  <input id="input" placeholder="Ask anything..."/>
+  <button onclick="send()">Send</button>
 </div>
 
 <script>
-function solve() {
-  let q = document.getElementById("question").value.toLowerCase();
-  let output = document.getElementById("output");
+let chat = document.getElementById("chat");
 
-  if(q.includes("newton")) {
-    output.innerHTML = "Newton's Laws explain motion and forces. First law: inertia, Second: F=ma, Third: action-reaction.";
+function addMessage(text, type){
+  let div = document.createElement("div");
+  div.className = "msg " + type;
+  div.innerText = text;
+  chat.appendChild(div);
+  chat.scrollTop = chat.scrollHeight;
+}
+
+function send(){
+  let input = document.getElementById("input");
+  let text = input.value.trim();
+  if(!text) return;
+
+  addMessage(text, "user");
+  input.value = "";
+
+  setTimeout(()=>reply(text), 500);
+}
+
+function quick(type){
+  document.getElementById("input").value = type + " ";
+}
+
+function reply(text){
+  let response = "";
+
+  if(text.toLowerCase().includes("explain")){
+    response = "Here's a simple explanation:\\n\\nBreak the concept into smaller parts and focus on understanding the basic idea behind it.";
   }
-  else if(q.includes("photosynthesis")) {
-    output.innerHTML = "Photosynthesis is the process where plants make food using sunlight, CO2 and water.";
+  else if(text.toLowerCase().includes("summary")){
+    response = "Quick Summary:\\n\\n- Key idea 1\\n- Key idea 2\\n- Key idea 3";
   }
-  else if(q.includes("derivative") || q.includes("math")) {
-    output.innerHTML = "A derivative shows how a function changes. It represents rate of change in calculus.";
+  else if(text.toLowerCase().includes("points")){
+    response = "Important Points:\\n\\n• Point 1\\n• Point 2\\n• Point 3";
   }
-  else {
-    output.innerHTML = "Try asking about Newton, photosynthesis, or maths concepts. More topics coming soon!";
+  else{
+    response = "I can help you with:\\n\\n• Explaining concepts\\n• Giving summaries\\n• Key points\\n\\nTry asking: 'Explain motion simply'";
   }
+
+  addMessage(response, "bot");
 }
 </script>
 
