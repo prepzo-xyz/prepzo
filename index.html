@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Prepzo</title>
@@ -11,12 +11,14 @@
     font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
     background: radial-gradient(circle at top, #141414, #0b0b0b);
     color: white;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
   }
 
   header {
-    padding: 18px 40px;
+    padding: 20px 40px;
     border-bottom: 1px solid rgba(255,255,255,0.06);
-    background: rgba(10,10,10,0.6);
   }
 
   .logo {
@@ -26,139 +28,64 @@
 
   /* HERO */
   .hero {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    padding: 110px 20px 60px;
+    padding: 40px 20px;
   }
-  <p id="gradeText" style="color:#888; margin-top:10px;"></p>
 
   .hero h1 {
-    font-size: 72px;
+    font-size: 70px;
     margin: 0;
   }
 
   .hero p {
     color: #b5b5b5;
     font-size: 18px;
-    margin-top: 10px;
+    margin-top: 12px;
   }
 
-  <button class="btn" onclick="location.href='grade.html'">
-  Start Learning
-</button>
-
-  /* SECTION */
-  .section {
-    padding: 60px 20px;
-  }
-
-  .section h2 {
-    text-align: center;
-    font-size: 28px;
-    margin-bottom: 30px;
-  }
-
-  /* GRID */
-  .grid {
-    max-width: 1000px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-  }
-
-  /* bottom centered row */
-  .grid-bottom {
-    max-width: 700px;
-    margin: 20px auto 0;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-
-  /* CARDS */
-  .card {
-    background: rgba(255,255,255,0.03);
-    padding: 22px;
-    border-radius: 16px;
-    border: 1px solid rgba(255,255,255,0.08);
-    transition: 0.25s;
+  .btn {
+    margin-top: 30px;
+    padding: 14px 30px;
+    border: none;
+    border-radius: 12px;
+    background: white;
+    color: black;
+    font-weight: 600;
     cursor: pointer;
-    text-align: center;
+    transition: 0.2s;
   }
 
-  .card:hover {
-    transform: translateY(-6px);
-    background: rgba(255,255,255,0.06);
-  }
-
-  /* grade selector */
-  .grade-grid {
-    max-width: 800px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 10px;
-  }
-
-  .grade {
-    padding: 10px;
-    border-radius: 10px;
-    border: 1px solid rgba(255,255,255,0.1);
-    text-align: center;
-    font-size: 14px;
-    color: #ccc;
-    cursor: pointer;
-  }
-
-  .grade:hover {
-    background: rgba(255,255,255,0.05);
-    color: white;
+  .btn:hover {
+    transform: scale(1.05);
   }
 
   footer {
     text-align: center;
-    padding: 40px;
+    padding: 20px;
     color: #666;
     border-top: 1px solid rgba(255,255,255,0.06);
-    margin-top: 40px;
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .hero h1 {
+      font-size: 42px;
+    }
+
+    .hero p {
+      font-size: 14px;
+    }
+
+    header {
+      padding: 15px 20px;
+    }
   }
 </style>
-  @media (max-width: 768px) {
-
-  .hero h1 {
-    font-size: 42px;
-  }
-
-  .hero p {
-    font-size: 14px;
-    padding: 0 10px;
-  }
-
-  .grid {
-    grid-template-columns: 1fr;
-  }
-
-  .grid-bottom {
-    grid-template-columns: 1fr;
-    max-width: 100%;
-  }
-
-  .grade-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .card {
-    padding: 18px;
-  }
-
-  .section {
-    padding: 40px 15px;
-  }
-
-  header {
-    padding: 14px 20px;
-  }
-}
 </head>
 
 <body>
@@ -167,91 +94,19 @@
   <div class="logo">Prepzo</div>
 </header>
 
-<!-- HERO -->
 <div class="hero">
   <h1>Prepzo</h1>
   <p>Your study companion for Grades 7–12</p>
-  <p> Focus. Learn. Improve.</p>
-  <button class="btn">Start Learning</button>
+  <p>Focus. Learn. Improve.</p>
+
+  <button class="btn" onclick="location.href='grade.html'">
+    Start Learning
+  </button>
 </div>
-
-<!-- GRADE SELECTOR -->
-<div class="section">
-  <h2>Select Your Grade</h2>
-
-  <div class="grade-grid">
-    <div class="grade">7</div>
-    <div class="grade">8</div>
-    <div class="grade">9</div>
-    <div class="grade">10</div>
-    <div class="grade">11</div>
-    <div class="grade">12</div>
-  </div>
-</div>
-
-<!-- DASHBOARD -->
-<div class="section">
-  <h2>Dashboard</h2>
-
-  <!-- TOP 3 -->
-  <div class="grid">
-
-    <div class="card" onclick="location.href='notes.html'">
-      <h3>📘 Notes</h3>
-      <p>Quick revision material for exams.</p>
-    </div>
-
-    <div class="card" onclick="location.href='ai-tools.html'">
-      <h3>🤖 AI Tools</h3>
-      <p>Ask doubts and understand concepts instantly.</p>
-    </div>
-
-    <div class="card" onclick="location.href='pyqs.html'">
-      <h3>📄 PYQs</h3>
-      <p>Practice previous year questions.</p>
-    </div>
-
-  </div>
-
-  <!-- BOTTOM CENTERED 2 -->
-  <div class="grid-bottom">
-
-    <div class="card" onclick="location.href='quiz.html'">
-      <h3>🧠 Quizzes</h3>
-      <p>Test your knowledge with MCQs.</p>
-    </div>
-
-    <div class="card">
-      <h3>📊 Labelled Diagrams</h3>
-      <p>Visual learning with important diagrams.</p>
-    </div>
-
-  </div>
-</div>
-  <script>
-let grade = localStorage.getItem("grade");
-
-if(grade){
-  console.log("User grade:", grade);
-}
-</script>
-  <script>
-let grade = localStorage.getItem("grade");
-
-if(grade){
-  document.getElementById("gradeText").innerText =
-    "Currently set for Grade " + grade;
-} else {
-  document.getElementById("gradeText").innerText =
-    "No grade selected yet";
-}
-</script>
 
 <footer>
-  © 2026 Prepzo • 
+  © 2026 Prepzo • Built for students
 </footer>
 
 </body>
 </html>
-
-
