@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Prepzo Chapters</title>
+<title>Prepzo Chapter</title>
 
 <style>
 body {
@@ -10,6 +10,7 @@ body {
   font-family:system-ui;
   background:#0b0b0b;
   color:white;
+  line-height:1.6;
 }
 
 .header {
@@ -21,16 +22,15 @@ body {
   padding:20px;
 }
 
-.card {
+.box {
   background:rgba(255,255,255,0.03);
-  padding:18px;
+  padding:15px;
   border-radius:12px;
-  margin-bottom:12px;
-  cursor:pointer;
+  margin-bottom:15px;
 }
 
-.card:hover {
-  background:rgba(255,255,255,0.06);
+h3 {
+  margin-top:0;
 }
 </style>
 </head>
@@ -38,60 +38,47 @@ body {
 <body>
 
 <div class="header">
-  <h2 id="title"></h2>
+  <h2 id="chapterTitle"></h2>
   <p id="info" style="color:#888;"></p>
 </div>
 
-<div class="section" id="chapters"></div>
+<div class="section">
+
+  <div class="box">
+    <h3>📌 Key Points</h3>
+    <ul>
+      <li>Important concept 1</li>
+      <li>Important concept 2</li>
+      <li>Important concept 3</li>
+    </ul>
+  </div>
+
+  <div class="box">
+    <h3>🧠 Explanation</h3>
+    <p>
+      This is where your detailed explanation will go.
+      Keep it simple and easy to revise before exams.
+    </p>
+  </div>
+
+  <div class="box">
+    <h3>📊 Formula / Summary</h3>
+    <p>
+      Key formulas or summary points will be shown here.
+    </p>
+  </div>
+
+</div>
 
 <script>
 let grade = localStorage.getItem("grade");
 let subject = localStorage.getItem("subject");
-let board = localStorage.getItem("board") || "CBSE";
+let chapter = localStorage.getItem("chapter");
 
-document.getElementById("title").innerText = subject + " Chapters";
+document.getElementById("chapterTitle").innerText = chapter;
+
 document.getElementById("info").innerText =
-  "Grade " + grade + " • " + board;
-
-let chapterList = {
-  "Maths": [
-    "Integers",
-    "Fractions",
-    "Algebra Basics",
-    "Linear Equations"
-  ],
-  "Science": [
-    "Motion",
-    "Force",
-    "Light",
-    "Sound"
-  ],
-  "Biology": [
-    "Cells",
-    "Human Body",
-    "Plants"
-  ],
-  "Chemistry": [
-    "Matter",
-    "Atoms",
-    "Chemical Reactions"
-  ]
-};
-
-let container = document.getElementById("chapters");
-
-if(chapterList[subject]){
-  chapterList[subject].forEach(ch => {
-    let div = document.createElement("div");
-    div.className = "card";
-    div.innerText = ch;
-    div.onclick = () => {
-      localStorage.setItem("chapter", ch);
-      window.location.href = "chapter.html";
-    };
-    container.appendChild(div);
-  });
-}
+  subject + " • Grade " + grade;
 </script>
 
 </body>
