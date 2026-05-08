@@ -31,6 +31,27 @@
     font-size: 14px;
   }
 
+  /* BOARD BUTTONS */
+  .board {
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: transparent;
+    color: white;
+    cursor: pointer;
+  }
+
+  .board.active {
+    background: white;
+    color: black;
+  }
+
+  .board.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
   /* SECTION */
   .section {
     padding: 60px 20px;
@@ -109,6 +130,13 @@
   <div class="grade-display" id="gradeText"></div>
 </header>
 
+<!-- BOARD SELECTOR -->
+<div id="boardSection" style="display:none; text-align:center; margin-top:20px;">
+  <button class="board active" onclick="setBoard('CBSE')">CBSE</button>
+  <button class="board disabled">ICSE (Coming Soon)</button>
+</div>
+
+<!-- DASHBOARD -->
 <div class="section">
   <h2>Dashboard</h2>
 
@@ -154,11 +182,26 @@
 
 <script>
 let grade = localStorage.getItem("grade");
+let board = localStorage.getItem("board") || "CBSE";
 
+// Show grade
 if(grade){
   document.getElementById("gradeText").innerText = "Grade " + grade;
+}
+
+// Show board selector ONLY for grades 7–10
+let boardSection = document.getElementById("boardSection");
+
+if(grade >= 7 && grade <= 10){
+  boardSection.style.display = "block";
 } else {
-  document.getElementById("gradeText").innerText = "";
+  boardSection.style.display = "none";
+}
+
+// Set board
+function setBoard(selected){
+  localStorage.setItem("board", selected);
+  location.reload();
 }
 </script>
 
