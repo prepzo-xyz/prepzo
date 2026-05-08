@@ -15,14 +15,11 @@ body {
   height:100vh;
 }
 
-/* HEADER */
 .header {
   padding:15px 20px;
   border-bottom:1px solid rgba(255,255,255,0.1);
-  font-weight:600;
 }
 
-/* CHAT AREA */
 .chat {
   flex:1;
   overflow-y:auto;
@@ -32,7 +29,6 @@ body {
   gap:15px;
 }
 
-/* MESSAGE */
 .msg {
   max-width:75%;
   padding:12px 16px;
@@ -51,7 +47,6 @@ body {
   background:#1a1a1a;
 }
 
-/* INPUT AREA */
 .input-area {
   border-top:1px solid rgba(255,255,255,0.1);
   padding:10px;
@@ -77,7 +72,6 @@ button {
   cursor:pointer;
 }
 
-/* QUICK ACTIONS */
 .quick {
   display:flex;
   gap:10px;
@@ -90,7 +84,6 @@ button {
   color:white;
   border:1px solid rgba(255,255,255,0.1);
 }
-
 </style>
 </head>
 
@@ -101,9 +94,9 @@ button {
 <div class="chat" id="chat"></div>
 
 <div class="quick">
-  <button onclick="quick('Explain this simply')">Explain</button>
-  <button onclick="quick('Give summary')">Summary</button>
-  <button onclick="quick('Important points')">Points</button>
+  <button onclick="quick('Explain motion simply')">Explain</button>
+  <button onclick="quick('Summary of force')">Summary</button>
+  <button onclick="quick('Important points of atoms')">Points</button>
 </div>
 
 <div class="input-area">
@@ -133,29 +126,77 @@ function send(){
   setTimeout(()=>reply(text), 500);
 }
 
-function quick(type){
-  document.getElementById("input").value = type + " ";
+function quick(text){
+  document.getElementById("input").value = text;
 }
 
+/* SMART RESPONSE SYSTEM */
 function reply(text){
-  let response = "";
+  text = text.toLowerCase();
 
-  if(text.toLowerCase().includes("explain")){
-    response = "Here's a simple explanation:\\n\\nBreak the concept into smaller parts and focus on understanding the basic idea behind it.";
-  }
-  else if(text.toLowerCase().includes("summary")){
-    response = "Quick Summary:\\n\\n- Key idea 1\\n- Key idea 2\\n- Key idea 3";
-  }
-  else if(text.toLowerCase().includes("points")){
-    response = "Important Points:\\n\\n• Point 1\\n• Point 2\\n• Point 3";
-  }
-  else{
-    response = "I can help you with:\\n\\n• Explaining concepts\\n• Giving summaries\\n• Key points\\n\\nTry asking: 'Explain motion simply'";
-  }
+  let topic = detectTopic(text);
+  let type = detectType(text);
+
+  let response = generateResponse(topic, type);
 
   addMessage(response, "bot");
+}
+
+/* DETECT TYPE */
+function detectType(text){
+  if(text.includes("explain")) return "explain";
+  if(text.includes("summary")) return "summary";
+  if(text.includes("point")) return "points";
+  if(text.includes("formula")) return "formula";
+  return "general";
+}
+
+/* DETECT TOPIC */
+function detectTopic(text){
+  if(text.includes("motion")) return "motion";
+  if(text.includes("force")) return "force";
+  if(text.includes("atom")) return "atoms";
+  if(text.includes("cell")) return "cell";
+  if(text.includes("number")) return "numbers";
+  return "general";
+}
+
+/* GENERATE RESPONSE */
+function generateResponse(topic, type){
+
+  let data = {
+    motion: {
+      explain: "Motion means movement of an object from one place to another over time.",
+      summary: "Motion:\\n- Change in position\\n- Measured using distance & time",
+      points: "• Distance\\n• Displacement\\n• Speed\\n• Velocity",
+      formula: "Speed = Distance / Time"
+    },
+    force: {
+      explain: "Force is a push or pull acting on an object.",
+      summary: "Force:\\n- Push/Pull\\n- Changes motion",
+      points: "• Contact force\\n• Non-contact force\\n• Net force",
+      formula: "F = m × a"
+    },
+    atoms: {
+      explain: "Atoms are the smallest units of matter.",
+      summary: "Atoms:\\n- Basic unit\\n- Combine to form molecules",
+      points: "• Proton\\n• Electron\\n• Neutron",
+      formula: "No direct formula"
+    },
+    general: {
+      explain: "Break the concept into small parts and understand step by step.",
+      summary: "Focus on key ideas and revise regularly.",
+      points: "• Read\\n• Understand\\n• Revise",
+      formula: "Depends on topic"
+    }
+  };
+
+  let selected = data[topic] || data["general"];
+
+  return selected[type] || selected["explain"];
 }
 </script>
 
 </body>
 </html>
+
