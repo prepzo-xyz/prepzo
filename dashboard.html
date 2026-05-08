@@ -6,120 +6,106 @@
 <title>Prepzo Dashboard</title>
 
 <style>
-  body {
-    margin: 0;
-    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
-    background: radial-gradient(circle at top, #141414, #0b0b0b);
-    color: white;
-  }
+body {
+  margin: 0;
+  font-family: system-ui;
+  background: radial-gradient(circle at top, #141414, #0b0b0b);
+  color: white;
+}
 
-  header {
-    padding: 18px 40px;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+header {
+  padding: 18px 40px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-  .logo {
-    font-size: 24px;
-    font-weight: 700;
-  }
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+}
 
-  .grade-display {
-    color: #888;
-    font-size: 14px;
-  }
+.grade-display {
+  color: #888;
+  font-size: 14px;
+}
 
-  /* BOARD BUTTONS */
-  .board {
-    padding: 10px 20px;
-    margin: 5px;
-    border-radius: 10px;
-    border: 1px solid rgba(255,255,255,0.2);
-    background: transparent;
-    color: white;
-    cursor: pointer;
-  }
+/* BOARD */
+.board {
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: transparent;
+  color: white;
+  cursor: pointer;
+}
 
-  .board.active {
-    background: white;
-    color: black;
-  }
+.board.active {
+  background: white;
+  color: black;
+}
 
-  .board.disabled {
-    opacity: 0.4;
-    cursor: not-allowed;
-  }
+.board.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
 
-  /* SECTION */
-  .section {
-    padding: 60px 20px;
-  }
+/* SECTION */
+.section {
+  padding: 60px 20px;
+}
 
-  .section h2 {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 28px;
-  }
+.section h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
 
-  /* GRID TOP */
-  .grid {
-    max-width: 1000px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-  }
+/* GRID */
+.grid {
+  max-width: 1000px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
 
-  /* GRID BOTTOM CENTERED */
-  .grid-bottom {
-    max-width: 700px;
-    margin: 20px auto 0;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
+.grid-bottom {
+  max-width: 700px;
+  margin: 20px auto 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
 
-  /* CARD */
-  .card {
-    background: rgba(255,255,255,0.03);
-    padding: 22px;
-    border-radius: 16px;
-    border: 1px solid rgba(255,255,255,0.08);
-    text-align: center;
-    cursor: pointer;
-    transition: 0.25s;
-  }
+.card {
+  background: rgba(255,255,255,0.03);
+  padding: 22px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.08);
+  text-align: center;
+  cursor: pointer;
+  transition: 0.25s;
+}
 
-  .card:hover {
-    transform: translateY(-6px);
-    background: rgba(255,255,255,0.06);
-  }
+.card:hover {
+  transform: translateY(-6px);
+  background: rgba(255,255,255,0.06);
+}
 
-  footer {
-    text-align: center;
-    padding: 30px;
-    color: #666;
-    border-top: 1px solid rgba(255,255,255,0.06);
-    margin-top: 40px;
-  }
+footer {
+  text-align: center;
+  padding: 30px;
+  color: #666;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  margin-top: 40px;
+}
 
-  /* MOBILE */
-  @media (max-width: 768px) {
-    .grid {
-      grid-template-columns: 1fr;
-    }
-
-    .grid-bottom {
-      grid-template-columns: 1fr;
-      max-width: 100%;
-    }
-
-    header {
-      padding: 14px 20px;
-    }
-  }
+@media (max-width: 768px) {
+  .grid { grid-template-columns: 1fr; }
+  .grid-bottom { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 
@@ -136,41 +122,41 @@
   <button class="board disabled">ICSE (Coming Soon)</button>
 </div>
 
-<!-- DASHBOARD -->
 <div class="section">
   <h2>Dashboard</h2>
 
-  <!-- TOP 3 -->
+  <!-- TOP -->
   <div class="grid">
 
     <div class="card" onclick="location.href='notes.html'">
       <h3>📘 Notes</h3>
-      <p>Quick revision material for exams.</p>
+      <p>Quick revision material</p>
     </div>
 
     <div class="card" onclick="location.href='ai-tools.html'">
       <h3>🤖 AI Tools</h3>
-      <p>Understand concepts instantly.</p>
+      <p>Smart study assistant</p>
     </div>
 
-    <div class="card" onclick="location.href='pyqs.html'">
-      <h3>📄 PYQs</h3>
-      <p>Practice previous year questions.</p>
+    <!-- DYNAMIC CARD -->
+    <div class="card" id="papersCard">
+      <h3 id="papersTitle"></h3>
+      <p id="papersDesc"></p>
     </div>
 
   </div>
 
-  <!-- BOTTOM 2 -->
+  <!-- BOTTOM -->
   <div class="grid-bottom">
 
     <div class="card" onclick="location.href='quiz.html'">
       <h3>🧠 Quizzes</h3>
-      <p>Test your knowledge with MCQs.</p>
+      <p>Test your knowledge</p>
     </div>
 
     <div class="card">
       <h3>📊 Labelled Diagrams</h3>
-      <p>Visual learning with key diagrams.</p>
+      <p>Visual learning</p>
     </div>
 
   </div>
@@ -181,7 +167,7 @@
 </footer>
 
 <script>
-let grade = localStorage.getItem("grade");
+let grade = parseInt(localStorage.getItem("grade"));
 let board = localStorage.getItem("board") || "CBSE";
 
 // Show grade
@@ -189,7 +175,7 @@ if(grade){
   document.getElementById("gradeText").innerText = "Grade " + grade;
 }
 
-// Show board selector ONLY for grades 7–10
+// Board logic
 let boardSection = document.getElementById("boardSection");
 
 if(grade >= 7 && grade <= 10){
@@ -198,9 +184,25 @@ if(grade >= 7 && grade <= 10){
   boardSection.style.display = "none";
 }
 
+// Papers logic
+let title = document.getElementById("papersTitle");
+let desc = document.getElementById("papersDesc");
+let card = document.getElementById("papersCard");
+
+if(grade >= 7 && grade <= 9){
+  title.innerText = "📄 Sample Papers";
+  desc.innerText = "Practice with sample papers";
+  card.onclick = () => location.href = "sample-papers.html";
+}
+else {
+  title.innerText = "📄 Sample Papers + PYQs";
+  desc.innerText = "Practice with sample papers & past questions";
+  card.onclick = () => location.href = "papers.html";
+}
+
 // Set board
-function setBoard(selected){
-  localStorage.setItem("board", selected);
+function setBoard(b){
+  localStorage.setItem("board", b);
   location.reload();
 }
 </script>
